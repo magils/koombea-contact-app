@@ -69,9 +69,10 @@ def import_contacts(csv_file_path, user, mapped_fields={}):
         try:
             db.session.add(upload)
             db.session.commit()
-        except exc.SQLAlchemyError:
+        except exc.SQLAlchemyError as se:
             logger.exception("Error persisting imported contacts")
             db.session.rollback()
+            raise se
     
     import_result["import_result"] = {
         "lines_read": (upload.successful_lines + upload.failed_lines),

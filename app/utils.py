@@ -1,4 +1,5 @@
 import re
+from passlib.hash import pbkdf2_sha256
 
 _PATTERNS = {
     "address": r"\w+",
@@ -13,7 +14,7 @@ _CARD_ISSUER_PATTERNS = {
     "Diners Club": "^3(?:0[0-5]|[68][0-9])[0-9]{11}$",
     "Discover": "^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$",
     "JCB": "^(?:2131|1800|35\d{3})\d{11}$",
-    "Mastercard": "^5[1-5][0-9]{14}$}",
+    "Mastercard": "^5[1-5][0-9]{14}$",
     "Visa": "^4[0-9]{12}(?:[0-9]{3})?$"
 }
 
@@ -36,6 +37,7 @@ def validate_with_pattern(pattern, raise_exception=False):
                 if raise_exception:
                     raise ValidationError(f"Value '{value}' is not valid.")
                 # Discard value
+                args = list(args)
                 args[1] = None
             
             func(*args, **kwargs)
@@ -50,3 +52,11 @@ def get_card_issuer(card_number):
         if re.search(pattern, card_number):
             return issuer
     return "Unknown"
+
+
+def hash_password(password):
+    return pbkdf2_sha256.hash(password)
+
+
+def check_password(password, hash):
+    return pbkdf2_sha256.verify(password, hash)

@@ -5,10 +5,13 @@ from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from app.config import AppConfig
 from app.errors import APIError, handler_api_errors
+from flask_bcrypt import Bcrypt
+
 
 db = SQLAlchemy()
 migrate = Migrate()
 jwt = JWTManager()
+bcrypt = Bcrypt()
 
 
 def get_logger(name):
@@ -26,10 +29,14 @@ def setup_modules(app):
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
+    bcrypt.init_app(app)
 
 def setup_blueprints(app):
-    from app.resources import contacts_resource
+    from app.resources.contacts import contacts_resource
+    from app.resources.users import users_resource
+
     app.register_blueprint(contacts_resource)
+    app.register_blueprint(users_resource)
 
 def create_app():
     app = Flask(__name__)
