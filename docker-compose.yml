@@ -1,0 +1,12 @@
+version: '2'
+services:
+  contacts_db:
+    image: mysql:latest
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: koombea
+      MYSQL_DATABASE: contacts_db
+      MYSQL_USER: koombea
+      MYSQL_PASSWORD: koombea
