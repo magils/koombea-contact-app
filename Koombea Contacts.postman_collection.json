@@ -119,8 +119,7 @@
 					],
 					"port": "5000",
 					"path": [
-						"uploads",
-						"8"
+						"uploads"
 					]
 				}
 			},
