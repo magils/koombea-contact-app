@@ -113,7 +113,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5000/uploads/8",
+					"raw": "localhost:5000/uploads",
 					"host": [
 						"localhost"
 					],
