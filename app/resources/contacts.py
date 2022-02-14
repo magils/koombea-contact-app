@@ -5,8 +5,7 @@ from app.models import *
 from werkzeug.utils import secure_filename
 import json, os
 from app.importer import import_contacts
-from app.config import AppConfig
-from app import db, get_logger
+from app import db, get_logger, conf
 import logging
 from datetime import datetime
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -16,7 +15,7 @@ contacts_resource = Blueprint("contacts", __name__)
 
 logger = get_logger(__name__)
 
-BASE_PATH = AppConfig.UPLOAD_FOLDER
+BASE_PATH = conf.UPLOAD_FOLDER
 
 @contacts_resource.route("/uploads")
 @jwt_required()

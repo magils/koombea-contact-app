@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "4e2702b4-371d-48c3-92c3-a34be45bfe64",
+		"name": "Koombea Contacts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload contacts with duplicated emails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/mgil/labs/jobs/koombea/contact-importer/resources/contacts-duplicated.csv"
+						},
+						{
+							"key": "fields-mapping",
+							"value": "{\"name\": \"nm\", \"birthdate\": \"b_date\", \"phone\": \"phn\", \"address\":\"addr\", \"credit_card\":\"cc\"}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/contacts",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload contact with invalid data Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/mgil/Downloads/contact-simple-file - Sheet1.csv"
+						},
+						{
+							"key": "fields-mapping",
+							"value": "{\"name\": \"nm\", \"birthdate\": \"b_date\", \"phone\": \"phn\", \"address\":\"addr\", \"credit_card\":\"cc\"}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/contacts",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Valid contacts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/mgil/Downloads/contact-simple-file - Sheet1.csv"
+						},
+						{
+							"key": "fields-mapping",
+							"value": "{\"name\": \"nm\", \"birthdate\": \"b_date\", \"phone\": \"phn\", \"address\":\"addr\", \"credit_card\":\"cc\"}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/contacts",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List uploads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/uploads/8",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"uploads",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List contacts by uploads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/contacts/uploads/9?page=1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"contacts",
+						"uploads",
+						"9"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"testy1@test.com\",\n    \"password\": \"Pass123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"testy1@test.com\",\n    \"password\": \"Pass123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"testy1@test.com\",\n    \"password\": \"Pass123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Contacts with Custom fields",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/mgil/labs/jobs/koombea/contact-importer/resources/contacts-custom_fields.csv"
+						},
+						{
+							"key": "fields-mapping",
+							"value": "{\"name\": \"nm\", \"birthdate\": \"bd\", \"phone\": \"phn\", \"address\":\"addr\", \"credit_card\":\"cc\", \"email\":\"mail\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/contacts",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY0NDgwMzQ0OSwianRpIjoiY2U0MWU1MTAtYTBkYy00YjQ5LTkxMjMtNGNlODNkOTc2ODUxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjQ0ODAzNDQ5LCJleHAiOjE2NDQ4ODk4NDl9.7Xvt0X45yhftMSsVpKeNtepDx_B6ianpnc7yCtiWL9Q",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -5,8 +5,7 @@ from app.utils import validate_with_pattern, get_card_issuer
 from sqlalchemy import UniqueConstraint, exc
 from enum import Enum
 from datetime import datetime, timedelta
-from app import jwt
-from app.config import AppConfig
+from app import jwt, conf
 from app import bcrypt
 
 
@@ -81,13 +80,13 @@ class User(db.Model):
         }
         return jwt.encode(
             payload,
-            AppConfig.SECRET_KEY,
+            conf.SECRET_KEY,
             algorithm="HS256"
         )
 
     @staticmethod
     def decode_auth_token(token):
-        payload = jwt.decode(token,  AppConfig.SECRET_KEY)
+        payload = jwt.decode(token,  conf.SECRET_KEY)
         return payload["sub"]
 
     @property
